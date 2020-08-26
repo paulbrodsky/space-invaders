@@ -291,11 +291,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1000
-  alien: {fileID: 0}
+  alien: {fileID: 899190816}
   waitTime: 1
   location: {x: 0, y: 0, z: 0}
   movePoint: {fileID: 0}
   move: 0
+  goingRight: 1
 --- !u!212 &899190815
 SpriteRenderer:
   m_ObjectHideFlags: 0

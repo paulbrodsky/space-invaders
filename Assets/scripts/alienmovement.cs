@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class alienmovement : MonoBehaviour
 {
-    public float speed = 1000f;
-
     public Transform alien;
 
     public float waitTime = 1f;
@@ -16,21 +14,47 @@ public class alienmovement : MonoBehaviour
 
     public bool move;
 
-
-    void Start()
-    {
+    public bool goingRight = true;
 
 
-    }
     void Update()
     {
         waitTime++;
 
-        if (waitTime == 100f)
+        if (goingRight)
         {
-            transform.Translate(Vector3.right);
+            if (waitTime == 50f)
+            {
+                transform.Translate(Vector3.right);
 
-            waitTime = 1f;
+                waitTime = 1f;
+
+                if (alien.position.x >= 10f)
+                {
+                    goingRight = false;
+
+                    transform.Translate(Vector3.down);
+                }
+            }
         }
+        else
+        {
+            if (waitTime == 50f)
+            {
+                transform.Translate(Vector3.left);
+
+                waitTime = 1f;
+
+                if (alien.position.x <= -10f)
+                {
+                    goingRight = true;
+
+                    transform.Translate(Vector3.down);
+                }
+
+
+            }
+        }
+
     }
 }
