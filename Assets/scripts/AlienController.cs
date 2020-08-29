@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class alienmovement : MonoBehaviour
+public class AlienController : MonoBehaviour
 {
+    private Transform enemyHolder;
     public Transform alien;
+
+    public GameObject alienObject;
 
     public float waitTime = 1f;
 
     public Vector3 location;
-
-    public Transform movePoint;
 
     public bool move;
 
@@ -21,15 +22,20 @@ public class alienmovement : MonoBehaviour
     {
         waitTime++;
 
+        // if (enemyHolder.childCount == 0)
+        // {
+        //     SceneManager.LoadScene("SampleScene");
+        // }
+
         if (goingRight)
         {
-            if (waitTime == 50f)
+            if (waitTime == 25f)
             {
                 transform.Translate(Vector3.right);
 
                 waitTime = 1f;
 
-                if (alien.position.x >= 10f)
+                if (alien.position.x >= 7f)
                 {
                     goingRight = false;
 
@@ -39,13 +45,13 @@ public class alienmovement : MonoBehaviour
         }
         else
         {
-            if (waitTime == 50f)
+            if (waitTime == 25f)
             {
                 transform.Translate(Vector3.left);
 
                 waitTime = 1f;
 
-                if (alien.position.x <= -10f)
+                if (alien.position.x <= -7f)
                 {
                     goingRight = true;
 
