@@ -8,7 +8,11 @@ public class BulletController : MonoBehaviour
 
     public Transform bulletPos;
 
+    public float hitWaitTIme;
+
     public Transform alien;
+
+    public cameraShake Shaker;
 
     public float speed = 0.1f;
 
@@ -19,6 +23,7 @@ public class BulletController : MonoBehaviour
         if (bulletPos.position.y >= 11f)
         {
             Destroy(bulletPos.gameObject);
+
         }
     }
 
@@ -29,11 +34,13 @@ public class BulletController : MonoBehaviour
         {
             Destroy(bulletPos.gameObject);
             Destroy(other.gameObject);
+            Shaker.Shake(0.1f);
         }
 
         if (other.tag == "shield")
         {
             Destroy(bulletPos.gameObject);
+            Shaker.Shake(0.1f);
         }
     }
 

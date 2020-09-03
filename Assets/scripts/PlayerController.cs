@@ -6,27 +6,39 @@ public class PlayerController : MonoBehaviour
 {
     public GameObject bullet;
 
+    public cameraShake Shaker;
+
     public float move;
 
+    public float duration = 1f;
+
     float speed = 0.2f;
+
+    public float coolDown = 0f;
 
     public Transform position;
 
     void Update()
     {
-        if (Input.GetKeyDown("space"))
+        coolDown++;
+
+        if (Input.GetKeyDown("space") && coolDown >= 50f)
         {
             Instantiate(bullet, position.position, position.rotation);
+
+            coolDown = 0f;
+
+            Shaker.Shake(0.08f);
         }
 
         if (position.position.x >= 20f)
         {
-            transform.Translate(Vector3.left);
+            position.position = new Vector2(20, -9);
         }
 
         if (position.position.x <= -20f)
         {
-            transform.Translate(Vector3.right);
+            position.position = new Vector2(-20, -9);
         }
 
         move = Input.GetAxis("Horizontal");
